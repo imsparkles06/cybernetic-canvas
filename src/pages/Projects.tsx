@@ -1,19 +1,20 @@
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
 import { SpotlightCard } from "@/components/SpotlightCard";
+import TechIcon from "@/components/TechIcon";
 import { ExternalLink } from "lucide-react";
 
 const projects = [
   {
     title: "Portfolio Website",
     description: "My personal site showcasing projects, blog, and contact.",
-    tech: "HTML, CSS, JS, FontAwesome",
+    tech: ["HTML", "CSS", "JS", "FontAwesome"],
     link: "https://github.com/im-shourya/porfoli",
   },
   {
     title: "Task Manager CRUD API",
     description: "Task management with full CRUD operations and RESTful API.",
-    tech: "Node.js, Express, MongoDB",
+    tech: ["Node.js", "Express", "MongoDB"],
     link: "https://github.com/im-shourya/Task-Management-CRUD-API-",
   },
 ];
@@ -57,9 +58,11 @@ const Projects = () => (
                 <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
                   {project.description}
                 </p>
-                <p className="text-xs text-primary font-semibold uppercase tracking-widest">
-                  {project.tech}
-                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {project.tech.map((t) => (
+                    <TechIcon key={t} name={t} />
+                  ))}
+                </div>
               </a>
             </SpotlightCard>
           </motion.div>
